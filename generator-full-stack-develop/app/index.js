@@ -6,99 +6,103 @@ module.exports = class extends Generator {
 		this.props = {};
 	};
 	
-  // prompting() {
-  //   return this.prompt([{
-  //     type    : 'confirm',
-  //     name    : 'server',
-  //     message : '项目是否需要服务器?'
-  //   }]).then((answers) => {
-  //     this.props['server'] = answers.server;
-  //   });
-  // };
+  prompting() {
+    return this.prompt([{
+      type    : 'confirm',
+      name    : 'server',
+      message : '项目是否需要server服务器?'
+    }]).then((answers) => {
+      this.props['server'] = answers.server;
+    });
+  };
 
-  // prompting2() {
-  // 	if (this.props.server) {
-  // 		return this.prompt([{
-	 //    	type    : 'confirm',
-	 //    	name    : 'delay',
-	 //    	message : '是否允许服务器安装包?'
-	 //    }]).then((answers) => {
-	 //      this.props['delay'] = answers.delay;
-	 //    });
-  // 	}
-  // };
+  haveServer() {
+    // 如果带服务器
+  	if (this.props.server) {
+  		return this.prompt([{
+        type    : 'confirm',
+        name    : 'server',
+        message : '项目是否前后端共用服务器?'
+      },{
+	    	type    : 'confirm',
+	    	name    : 'delay',
+	    	message : '是否允许服务器安装包?'
+	    }]).then((answers) => {
+	      this.props['delay'] = answers.delay;
+	    });
+  	}
+  };
 
-  webpack() {
+  configuring() {
   	this.fs.copy(
 			this.templatePath('webpack.config.js'),
 			this.destinationPath('webpack.config.js')
   	)
-  }
 
-  pack() {
   	this.fs.copy(
 			this.templatePath('package.json'),
 			this.destinationPath('package.json')
   	)
-  }
-
-  babelRc() {
+    
   	this.fs.copy(
 			this.templatePath('babelrc'),
 			this.destinationPath('.babelrc')
   	)
-  }
 
-  editorConfig() {
   	this.fs.copy(
   		this.templatePath('editorconfig'),
   		this.destinationPath('.editorconfig')
   	)
   }
 
-  base() {
-  	this.fs.copyTpl(
-  		this.templatePath('index.html'),
-  		this.destinationPath('index.html')
-  	);
+
+  front() {
+    if (this.props['server']) {
+    	this.fs.copyTpl(
+    		this.templatePath('index.html'),
+    		this.destinationPath('index.html')
+    	);
+    } else {
+
+    }
 
   	this.fs.copy(
-  		this.templatePath('src/**'),
-  		this.destinationPath('src')
+  		this.templatePath('front'),
+  		this.destinationPath('front')
   	);
 
-  	this.fs.copy(
-  		this.templatePath('dist/**'),
-  		this.destinationPath('dist/')
-  	)
+  };
+
+  server() {
+
   };
 
 	installingLodash() {
 		// webpack
-    this.npmInstall([
-    	'webpack',
-    	'css-loader',
-    	'style-loader',
-    	'file-loader',
-    	'url-loader',
-    	'less',
-    	'less-loader',
-    	'extract-text-webpack-plugin',
-    	'html-webpack-plugin',
-    	'transfer-webpack-plugin'
-    ], { 'saveDev': true });
+    // this.npmInstall([
+    // 	'webpack',
+    // 	'css-loader',
+    // 	'style-loader',
+    // 	'file-loader',
+    // 	'url-loader',
+    // 	'less',
+    // 	'less-loader',
+    // 	'extract-text-webpack-plugin',
+    // 	'html-webpack-plugin',
+    // 	'transfer-webpack-plugin'
+    // ], { 'saveDev': true });
 
-    // babel
-    this.npmInstall(['babel-preset-es2015', 'babel-preset-stage-0', 'babel-runtime', 'babel-plugin-transform-runtime'], { 'saveDev': true })
+    // // babel
+    // this.npmInstall(['babel-preset-es2015', 'babel-preset-stage-0', 'babel-runtime', 'babel-plugin-transform-runtime'], { 'saveDev': true })
     
-    // base
-    this.npmInstall(['jquery'], { 'save': true });
+    // // base
+    // this.npmInstall(['jquery'], { 'save': true });
 
     // 如果需要服务器
     // if (this.props.server) {
     // 	this.npmInstall(['webpack-dev-middleware', 'webpack-hot-middleware'], { 'saveDev': true });
     // } else {
-    	this.npmInstall(['webpack-dev-server'], { 'saveDev': true });
+    	// this.npmInstall(['webpack-dev-server'], { 'saveDev': true });
     // }
 
   };

@@ -1,0 +1,20 @@
+{
+  "name": "developer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "apply": "sudo npm link ./generator-demo-develop; sudo npm link ./generator-front-end-develop",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nannan9507/Developer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nannan9507/Developer/issues"
+  },
+  "homepage": "https://github.com/nannan9507/Developer#readme"
+}

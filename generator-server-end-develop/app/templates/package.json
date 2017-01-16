@@ -1,18 +1,14 @@
 {
-  "name": "generator-full-stack-develop",
+  "name": "abstack",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack-dev-server --inline --hot --quiet --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "file": [
-    "app"
-  ],
   "author": "",
-  "keywords": ["yeoman-generator"],
   "license": "ISC",
-  "dependencies": {
-    "yeoman-generator": "^1.0.1"
-  }
+  "devDependencies": {},
+  "dependencies": {}
 }
