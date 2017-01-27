@@ -1,0 +1,24 @@
+{
+  "name": "generator-developer",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "413508034@qq.com",
+    "email": "413508034@qq.com",
+    "url": ""
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "",
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^1.1.0"
+  },
+  "repository": "https://github.com/nannan9507/Developer.git",
+  "license": "MIT"
+}

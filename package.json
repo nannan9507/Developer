@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/nannan9507/Developer/issues"
   },
-  "homepage": "https://github.com/nannan9507/Developer#readme"
+  "homepage": "https://github.com/nannan9507/Developer#readme",
+  "devDependencies": {
+    "generator-generator": "^2.0.0"
+  }
 }
