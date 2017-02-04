@@ -22,6 +22,7 @@ module.exports = class extends Generator {
 
   writing() {
     this.composeWith('developer:webpack', { hasServer: this.props.server });
+    this.composeWith('developer:package', { hasServer: this.props.server });
 
     if (this.props.server) {
       this.fs.copy(

@@ -24,10 +24,11 @@ module.exports = class extends Generator {
   }
 
   install() {
+    this.npmInstall(['webpack', 'extract-text-webpack-plugin', 'html-webpack-plugin', 'transfer-webpack-plugin'])
     if (options.server) {
-
+      this.npmInstall(['webpack', 'webpack-dev-middleware', 'webpack-hot-middleware', 'reload'], { 'save-dev': true })
     } else {
-      this.npmInstall(['webpack', 'webpack-dev-middleware', 'webpack-hot-middleware', 'extract-text-webpack-plugin', 'html-webpack-plugin', 'transfer-webpack-plugin', 'webpack-dev-server', 'reload'], { 'save-dev': true })
+      this.npmInstall(['webpack', 'webpack-dev-server'], { 'save-dev': true })
     }
   }
 }

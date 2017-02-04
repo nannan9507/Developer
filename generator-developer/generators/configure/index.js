@@ -8,11 +8,6 @@ module.exports = class extends Generator {
 
   configuring() {
     this.fs.copy(
-      this.templatePath('package.json'),
-      this.destinationPath('package.json')
-    )
-
-    this.fs.copy(
       this.templatePath('babelrc'),
       this.destinationPath('.babelrc')
     )
