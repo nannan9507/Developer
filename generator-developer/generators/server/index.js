@@ -6,25 +6,28 @@ module.exports = class extends Generator {
     super(args, opts);
   }
 
-  configuring() {
-    this.fs.copy(
-      this.templatePath('webpack.config.js'),
-      this.destinationPath('webpack.config.js')
-    )
+  initializing() {
+    this.props = {};
+  }
 
-    this.fs.copy(
-      this.templatePath('package.json'),
-      this.destinationPath('package.json')
-    )
+  prompting() {
+    return this.prompt([{
+      type: 'confirm',
+      name: 'server',
+      message: '是否需要服务器?'
+    }]).then((answer) => {
+      this.props['server'] = answer.server;
+    })
+  }
 
-    this.fs.copy(
-      this.templatePath('babelrc'),
-      this.destinationPath('.babelrc')
-    )
+  writing() {
+    this.composeWith('developer:webpack', { hasServer: this.props.server });
 
-    this.fs.copy(
-      this.templatePath('editorconfig'),
-      this.destinationPath('.editorconfig')
-    )
+    if (this.props.server) {
+      this.fs.copy(
+        this.templatePath(),
+        this.destinationPath()
+      )
+    }
   }
 }

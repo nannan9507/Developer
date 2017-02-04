@@ -8,11 +8,6 @@ module.exports = class extends Generator {
 
   configuring() {
     this.fs.copy(
-      this.templatePath('webpack.config.js'),
-      this.destinationPath('webpack.config.js')
-    )
-
-    this.fs.copy(
       this.templatePath('package.json'),
       this.destinationPath('package.json')
     )
