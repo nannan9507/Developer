@@ -37,7 +37,7 @@ var webpackConfig = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['', '.js', '.vue', '.less']
+    extensions: ['', '.js', '.less']
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
