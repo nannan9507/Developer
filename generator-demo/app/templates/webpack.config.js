@@ -32,6 +32,9 @@ var webpackConfig = {
       {
         test: require.resolve('jquery'),
         loader: 'expose?jQuery!expose?$'
+      }, {
+        test: /\.html$/,
+        loader: 'raw-loader'
       }
     ]
   },

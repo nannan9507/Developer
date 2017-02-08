@@ -64,7 +64,8 @@ module.exports = class extends Generator {
     	'less-loader',
     	'extract-text-webpack-plugin',
     	'html-webpack-plugin',
-    	'transfer-webpack-plugin'
+    	'transfer-webpack-plugin',
+      'raw-loader'
     ], { 'saveDev': true });
 
     // babel
