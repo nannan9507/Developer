@@ -10,6 +10,11 @@ module.exports = class extends Generator {
   }
 
   configuring() {
+    this.fs.copy(
+      this.templatePath('empty.json'),
+      this.destinationPath('./front/package.json')
+    )
+
     if (options.server) {
       this.fs.copy(
         this.templatePath('hasServer.json'),
