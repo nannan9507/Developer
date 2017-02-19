@@ -22,7 +22,7 @@ var webpackConfig = {
       },
       {
         test: /\.(css|less)/,
-        loader: ExtractTextPlugin.extract('style', 'css!less'),
+        loader: ExtractTextPlugin.extract({ fallback: 'style', use: 'css!less'}),
         exclude: /node_modules/
       },
       {
@@ -43,7 +43,6 @@ var webpackConfig = {
     extensions: ['', '.js', '.vue', '.less']
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin('main.css')
   ]
